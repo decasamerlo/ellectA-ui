@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +14,8 @@ import { EleicoesModule } from './eleicoes/eleicoes.module';
     BrowserModule,
     BrowserAnimationsModule,
 
-    EleicoesModule
+    EleicoesModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
