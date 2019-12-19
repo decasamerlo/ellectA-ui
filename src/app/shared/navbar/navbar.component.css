@@ -46,3 +46,7 @@
 .menu.exibindo-menu {
   width: 250px;
 }
+
+.menu a.ativo {
+  background-color: dimgray;
+}
