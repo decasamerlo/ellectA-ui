@@ -16,4 +16,8 @@ label {
     width: 1170px;
     margin: 0 auto;
   }
+
+  .menu-toggle.exibindo-menu {
+    display: none;
+  }
 }
