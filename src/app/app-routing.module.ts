@@ -1,10 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { EleicoesCadastroComponent } from './eleicoes/eleicoes-cadastro/eleicoes-cadastro.component';
+import { PaginaNaoEncontradaComponent } from './shared/pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'eleicoes/new', pathMatch: 'full' }
+  { path: '', redirectTo: 'eleicoes/new', pathMatch: 'full' },
+  { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
+  { path: '**', redirectTo: 'pagina-nao-encontrada' }
 ];
 
 @NgModule({

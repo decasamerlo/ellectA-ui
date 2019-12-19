@@ -21,8 +21,6 @@ import { EleicoesCadastroComponent } from './eleicoes-cadastro/eleicoes-cadastro
 
     EleicoesRoutingModule
   ],
-  exports: [
-    EleicoesCadastroComponent
-  ]
+  exports: []
 })
 export class EleicoesModule { }
