@@ -1,4 +1,3 @@
-import { EleicoesRoutingModule } from './eleicoes-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,6 +6,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 
 import { EleicoesCadastroComponent } from './eleicoes-cadastro/eleicoes-cadastro.component';
+import { EleicoesRoutingModule } from './eleicoes-routing.module';
 
 @NgModule({
   declarations: [
