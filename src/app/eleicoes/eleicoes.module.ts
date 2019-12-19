@@ -1,3 +1,4 @@
+import { EleicoesRoutingModule } from './eleicoes-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -16,7 +17,9 @@ import { EleicoesCadastroComponent } from './eleicoes-cadastro/eleicoes-cadastro
 
     ButtonModule,
     InputTextModule,
-    CalendarModule
+    CalendarModule,
+
+    EleicoesRoutingModule
   ],
   exports: [
     EleicoesCadastroComponent
