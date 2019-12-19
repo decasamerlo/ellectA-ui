@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="ui-g">
+      <div class="ui-g-12">
+          <h1>Cadastro de Candidato</h1>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+          <label for="nome">Nome</label>
+          <input pInputText type="text" required>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Cargo</label>
+        <p-dropdown [options]="cargos" placeholder="Selecione" required></p-dropdown>
+      </div>
+      <div class="ui-g-12">
+          <p-button label="Cadastrar"></p-button>
+      </div>
+  </div>
+</div>

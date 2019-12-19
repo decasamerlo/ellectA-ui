@@ -9,9 +9,7 @@ import { EleicoesCadastroComponent } from './eleicoes-cadastro/eleicoes-cadastro
 import { EleicoesRoutingModule } from './eleicoes-routing.module';
 
 @NgModule({
-  declarations: [
-    EleicoesCadastroComponent
-  ],
+  declarations: [EleicoesCadastroComponent],
   imports: [
     CommonModule,
 
@@ -20,7 +18,6 @@ import { EleicoesRoutingModule } from './eleicoes-routing.module';
     CalendarModule,
 
     EleicoesRoutingModule
-  ],
-  exports: []
+  ]
 })
 export class EleicoesModule { }

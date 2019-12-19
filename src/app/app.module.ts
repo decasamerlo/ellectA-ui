@@ -1,3 +1,4 @@
+import { CandidatosModule } from './candidatos/candidatos.module';
 import { CargosModule } from './cargos/cargos.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 
     EleicoesModule,
     CargosModule,
+    CandidatosModule,
     SharedModule,
     AppRoutingModule
   ],
