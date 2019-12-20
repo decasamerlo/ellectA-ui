@@ -1,14 +1,16 @@
 <div class="container">
-  <div class="ui-g">
+  <form #f="ngForm" (ngSubmit)="salvar(f)">
+    <div class="ui-g">
       <div class="ui-g-12">
-          <h1>Cadastro de Cargo</h1>
+        <h1>Cadastro de Cargo</h1>
       </div>
       <div class="ui-g-12 ui-fluid">
-          <label for="nome">Nome</label>
-          <input pInputText type="text" required>
+        <label for="nome">Nome</label>
+        <input pInputText type="text" required [(ngModel)]="cargo.nome" name="nome">
       </div>
       <div class="ui-g-12">
-          <p-button label="Cadastrar"></p-button>
+        <p-button label="Cadastrar"></p-button>
       </div>
-  </div>
+    </div>
+  </form>
 </div>
