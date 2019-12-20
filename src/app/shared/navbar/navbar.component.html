@@ -1,11 +1,9 @@
 <nav class="navbar">
-  <div class="container" [ngClass]="{ 'exibindo-menu' : exibindoMenu }">
     <div class="ui-g">
       <div class="ui-g-12">
-        <a href="javascript:;" class="menu-toggle" [ngClass]="{ 'exibindo-menu' : exibindoMenu }" (click)="toggleMenu()"><i class="pi pi-bars"></i></a>
+        <a href="javascript:;" class="menu-toggle" (click)="toggleMenu()"><i class="pi pi-bars"></i></a>
       </div>
     </div>
-  </div>
 
   <div class="side-menu" [ngClass]="{ 'exibindo-menu' : exibindoMenu }">
     <a class="menu" href="javascript:;" (click)="toggleMenu()"><i class="pi pi-times"></i></a>

@@ -11,13 +11,7 @@ label {
   margin: 10px;
 }
 
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-    margin: 0 auto;
-  }
-
-  .menu-toggle.exibindo-menu {
-    display: none;
-  }
+.container {
+  max-width: 600px;
+  margin: auto;
 }

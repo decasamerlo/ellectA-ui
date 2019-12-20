@@ -49,6 +49,7 @@
 }
 
 .menu-toggle i {
+  margin-left: 20px;
   color: white;
   transform: scale(1.5);
 }
