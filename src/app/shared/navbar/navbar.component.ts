@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   exibindoMenu = false;
+  menu = 'cadastro';
 
   constructor() { }
 
@@ -17,6 +18,14 @@ export class NavbarComponent implements OnInit {
 
   toggleMenu() {
     this.exibindoMenu = !this.exibindoMenu;
+  }
+
+  toggleSubMenu(menu: string) {
+    if (menu === this.menu) {
+      this.menu = '';
+    } else {
+      this.menu = menu;
+    }
   }
 
 }

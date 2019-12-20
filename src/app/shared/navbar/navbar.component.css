@@ -4,7 +4,7 @@
   height: 70px;
 }
 
-.menu {
+.side-menu {
   top: 0;
   height: 100%;
   position: fixed;
@@ -17,11 +17,9 @@
   transition: 0.3s;
 
   margin: 0;
-  list-style: none;
 }
 
-.menu a {
-  padding: 8px 8px 8px 32px;
+.side-menu .menu {
   text-decoration: none;
   font-size: 25px;
   color: lightgrey;
@@ -32,7 +30,19 @@
   margin: 5px;
 }
 
-.menu a:hover {
+.side-menu .sub-menu {
+  text-decoration: none;
+  font-size: 15px;
+  color: lightgrey;
+  display: block;
+  border-bottom: 1px solid lightgrey;
+  transition: 0.3s;
+  padding: 10px;
+  margin: 5px;
+  margin-left: 20px;
+}
+
+.side-menu a:hover {
   color: white;
   background-color: dimgray;
   transform: scale(1.06);
@@ -43,10 +53,10 @@
   transform: scale(1.5);
 }
 
-.menu.exibindo-menu {
+.side-menu.exibindo-menu {
   width: 250px;
 }
 
-.menu a.ativo {
+.side-menu a.ativo {
   background-color: dimgray;
 }

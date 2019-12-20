@@ -7,10 +7,13 @@
     </div>
   </div>
 
-  <div class="menu" [ngClass]="{ 'exibindo-menu' : exibindoMenu }">
-    <a href="javascript:;" (click)="toggleMenu()"><i class="pi pi-times"></i></a>
-    <a href="javascript:;" (click)="toggleMenu()" routerLink="/eleicoes/new" routerLinkActive="ativo">Eleições</a>
-    <a href="javascript:;" (click)="toggleMenu()" routerLink="/cargos/new" routerLinkActive="ativo">Cargos</a>
-    <a href="javascript:;" (click)="toggleMenu()" routerLink="/candidatos/new" routerLinkActive="ativo">Candidatos</a>
+  <div class="side-menu" [ngClass]="{ 'exibindo-menu' : exibindoMenu }">
+    <a class="menu" href="javascript:;" (click)="toggleMenu()"><i class="pi pi-times"></i></a>
+    <a class="menu" href="javascript:;" (click)="toggleSubMenu('cadastro')" [ngClass]="menu === 'cadastro' ? 'ativo' : ''">Cadastro</a>
+    <div *ngIf="menu === 'cadastro'">
+      <a class="sub-menu" href="javascript:;" (click)="toggleMenu()" routerLink="/eleicoes/new" routerLinkActive="ativo">Eleições</a>
+      <a class="sub-menu" href="javascript:;" (click)="toggleMenu()" routerLink="/cargos/new" routerLinkActive="ativo">Cargos</a>
+      <a class="sub-menu" href="javascript:;" (click)="toggleMenu()" routerLink="/candidatos/new" routerLinkActive="ativo">Candidatos</a>
+    </div>
   </div>
 </nav>
