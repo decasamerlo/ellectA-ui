@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { ErrorHandlerService } from './error-handler.service';
 
 @NgModule({
   declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
@@ -11,8 +12,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
     CommonModule,
     RouterModule
   ],
-  exports: [
-    NavbarComponent
-  ]
+  exports: [NavbarComponent],
+  providers: [ErrorHandlerService]
 })
 export class SharedModule { }

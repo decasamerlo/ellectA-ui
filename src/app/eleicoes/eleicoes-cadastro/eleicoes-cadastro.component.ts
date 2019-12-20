@@ -6,6 +6,7 @@ import { ToastyService } from 'ng2-toasty';
 
 import { EleicaoService } from '../eleicao.service';
 import { Eleicao } from '../eleicao';
+import { ErrorHandlerService } from 'src/app/shared/error-handler.service';
 
 @Component({
   selector: 'app-eleicoes-cadastro',
@@ -19,7 +20,8 @@ export class EleicoesCadastroComponent implements OnInit {
   constructor(
     private title: Title,
     private eleicaoService: EleicaoService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class EleicoesCadastroComponent implements OnInit {
         this.toasty.success(`Eleição ${eleicao.id} salva com sucesso!`);
         form.reset();
         this.eleicao = new Eleicao();
-      }).catch(erro => console.log('erro: ', erro));
+      }).catch(erro => this.errorHandler.handle(erro));
   }
 
 }

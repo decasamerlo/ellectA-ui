@@ -6,6 +6,7 @@ import { ToastyService } from 'ng2-toasty';
 
 import { CargoService } from '../cargo.service';
 import { Cargo } from '../cargo';
+import { ErrorHandlerService } from 'src/app/shared/error-handler.service';
 
 @Component({
   selector: 'app-cargos-cadastro',
@@ -19,7 +20,8 @@ export class CargosCadastroComponent implements OnInit {
   constructor(
     private title: Title,
     private cargoService: CargoService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class CargosCadastroComponent implements OnInit {
         this.toasty.success(`Cargo ${cargo.id} salvo com sucesso!`);
         form.reset();
         this.cargo = new Cargo();
-      }).catch(erro => console.log('erro: ', erro));
+      }).catch(erro => this.errorHandler.handle(erro));
   }
 
 }

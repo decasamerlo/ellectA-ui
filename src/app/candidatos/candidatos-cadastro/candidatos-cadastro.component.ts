@@ -7,6 +7,7 @@ import { ToastyService } from 'ng2-toasty';
 import { CargoService } from 'src/app/cargos/cargo.service';
 import { Candidato } from '../candidato';
 import { CandidatoService } from '../candidato.service';
+import { ErrorHandlerService } from 'src/app/shared/error-handler.service';
 
 @Component({
   selector: 'app-candidatos-cadastro',
@@ -22,7 +23,8 @@ export class CandidatosCadastroComponent implements OnInit {
     private title: Title,
     private cargoService: CargoService,
     private candidatoService: CandidatoService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit() {
@@ -34,7 +36,7 @@ export class CandidatosCadastroComponent implements OnInit {
     this.cargoService.listar()
       .then(cargos => {
         this.cargos = cargos.map(cargo => ({ label: cargo.nome, value: cargo.id }));
-      });
+      }).catch(erro => this.errorHandler.handle(erro));
   }
 
   salvar(form: NgForm) {
@@ -43,7 +45,7 @@ export class CandidatosCadastroComponent implements OnInit {
         this.toasty.success(`Candidato ${candidato.id} salvo com sucesso!`);
         form.reset();
         this.candidato = new Candidato();
-      }).catch(erro => console.log('erro: ', erro));
+      }).catch(erro => this.errorHandler.handle(erro));
   }
 
 }
