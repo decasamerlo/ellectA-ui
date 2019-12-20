@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 import { CargoService } from '../cargo.service';
 import { Cargo } from '../cargo';
@@ -18,7 +18,7 @@ export class CargosCadastroComponent implements OnInit {
   ngOnInit() {
   }
 
-  salvar(form: FormControl) {
+  salvar(form: NgForm) {
     this.cargoService.adicionar(this.cargo)
       .then(cargo => {
         console.log(cargo);

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import { environment } from './../../environments/environment';
 import { Cargo } from './cargo';
 
 @Injectable({
@@ -7,9 +9,11 @@ import { Cargo } from './cargo';
 })
 export class CargoService {
 
-  cargosUrl = 'http://localhost:8080/cargos';
+  cargosUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.cargosUrl = `${environment.apiUrl}/cargos`;
+  }
 
   listar(): Promise<any> {
     return this.http.get(`${this.cargosUrl}`).toPromise();
