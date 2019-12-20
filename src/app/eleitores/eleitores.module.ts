@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
+import { EleitoresVotoComponent } from './eleitores-voto/eleitores-voto.component';
+import { EleitoresRoutingModule } from './eleitores-routing.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [EleitoresVotoComponent],
   imports: [
-    CommonModule
+    CommonModule,
+
+    EleitoresRoutingModule
   ]
 })
 export class EleitoresModule { }
