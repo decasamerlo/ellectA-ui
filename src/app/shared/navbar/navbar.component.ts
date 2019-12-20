@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   exibindoMenu = false;
-  menu = 'cadastro';
+  menu = 'login';
 
   constructor() { }
 
