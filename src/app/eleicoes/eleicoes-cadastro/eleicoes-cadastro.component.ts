@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
+import { ToastyService } from 'ng2-toasty';
+
 import { EleicaoService } from '../eleicao.service';
 import { Eleicao } from '../eleicao';
 
@@ -16,7 +18,8 @@ export class EleicoesCadastroComponent implements OnInit {
 
   constructor(
     private title: Title,
-    private eleicaoService: EleicaoService
+    private eleicaoService: EleicaoService,
+    private toasty: ToastyService
   ) { }
 
   ngOnInit() {
@@ -26,7 +29,7 @@ export class EleicoesCadastroComponent implements OnInit {
   salvar(form: NgForm) {
     this.eleicaoService.adicionar(this.eleicao)
       .then(eleicao => {
-        console.log(eleicao);
+        this.toasty.success(`Eleição ${eleicao.id} salva com sucesso!`);
         form.reset();
         this.eleicao = new Eleicao();
       }).catch(erro => console.log('erro: ', erro));

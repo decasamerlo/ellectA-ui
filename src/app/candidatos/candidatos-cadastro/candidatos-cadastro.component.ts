@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { ToastyService } from 'ng2-toasty';
+
 import { CargoService } from 'src/app/cargos/cargo.service';
 import { Candidato } from '../candidato';
 import { CandidatoService } from '../candidato.service';
@@ -17,7 +19,8 @@ export class CandidatosCadastroComponent implements OnInit {
 
   constructor(
     private cargoService: CargoService,
-    private candidatoService: CandidatoService
+    private candidatoService: CandidatoService,
+    private toasty: ToastyService
   ) { }
 
   ngOnInit() {
@@ -34,7 +37,7 @@ export class CandidatosCadastroComponent implements OnInit {
   salvar(form: NgForm) {
     this.candidatoService.adicionar(this.candidato)
       .then(candidato => {
-        console.log(candidato);
+        this.toasty.success(`Candidato ${candidato.id} salvo com sucesso!`);
         form.reset();
         this.candidato = new Candidato();
       }).catch(erro => console.log('erro: ', erro));
