@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 
 import { CandidatosCadastroComponent } from './candidatos-cadastro/candidatos-cadastro.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [CandidatosCadastroComponent],
   imports: [
     CommonModule,
+    FormsModule,
 
     DropdownModule,
     ButtonModule,

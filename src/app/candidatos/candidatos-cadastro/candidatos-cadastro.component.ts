@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 import { CargoService } from 'src/app/cargos/cargo.service';
+import { Candidato } from '../candidato';
+import { CandidatoService } from '../candidato.service';
 
 @Component({
   selector: 'app-candidatos-cadastro',
@@ -9,8 +13,12 @@ import { CargoService } from 'src/app/cargos/cargo.service';
 export class CandidatosCadastroComponent implements OnInit {
 
   cargos = [];
+  candidato = new Candidato();
 
-  constructor(private cargoService: CargoService) { }
+  constructor(
+    private cargoService: CargoService,
+    private candidatoService: CandidatoService
+  ) { }
 
   ngOnInit() {
     this.carregarCargos();
@@ -21,6 +29,15 @@ export class CandidatosCadastroComponent implements OnInit {
       .then(cargos => {
         this.cargos = cargos.map(cargo => ({ label: cargo.nome, value: cargo.id }));
       });
+  }
+
+  salvar(form: NgForm) {
+    this.candidatoService.adicionar(this.candidato)
+      .then(candidato => {
+        console.log(candidato);
+        form.reset();
+        this.candidato = new Candidato();
+      }).catch(erro => console.log('erro: ', erro));
   }
 
 }
