@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CargoService } from 'src/app/cargos/cargo.service';
 
 @Component({
   selector: 'app-candidatos-cadastro',
@@ -7,14 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidatosCadastroComponent implements OnInit {
 
-  cargos = [
-    { label: 'Diretor', value: 1 },
-    { label: 'Vice-Diretor', value: 1 }
-  ];
+  cargos = [];
 
-  constructor() { }
+  constructor(private cargoService: CargoService) { }
 
   ngOnInit() {
+    this.carregarCargos();
+  }
+
+  carregarCargos() {
+    this.cargoService.listar()
+      .then(cargos => {
+        this.cargos = cargos.map(cargo => ({ label: cargo.nome, value: cargo.id }));
+      });
   }
 
 }
