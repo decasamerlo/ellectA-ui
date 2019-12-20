@@ -8,6 +8,7 @@ import { DropdownModule } from 'primeng/dropdown';
 
 import { CandidatosCadastroComponent } from './candidatos-cadastro/candidatos-cadastro.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   declarations: [CandidatosCadastroComponent],
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     ButtonModule,
     InputTextModule,
 
-    CandidatosRoutingModule
+    CandidatosRoutingModule,
+    SharedModule
   ]
 })
 export class CandidatosModule { }

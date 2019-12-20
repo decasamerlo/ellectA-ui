@@ -29,12 +29,14 @@ export class CargosCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
-    this.cargoService.adicionar(this.cargo)
-      .then(cargo => {
-        this.toasty.success(`Cargo ${cargo.id} salvo com sucesso!`);
-        form.reset();
-        this.cargo = new Cargo();
-      }).catch(erro => this.errorHandler.handle(erro));
+    if (form.valid) {
+      this.cargoService.adicionar(this.cargo)
+        .then(cargo => {
+          this.toasty.success(`Cargo ${cargo.id} salvo com sucesso!`);
+          form.reset();
+          this.cargo = new Cargo();
+        }).catch(erro => this.errorHandler.handle(erro));
+    }
   }
 
 }

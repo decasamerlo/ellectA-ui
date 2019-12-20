@@ -29,12 +29,15 @@ export class EleicoesCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
-    this.eleicaoService.adicionar(this.eleicao)
-      .then(eleicao => {
-        this.toasty.success(`Eleição ${eleicao.id} salva com sucesso!`);
-        form.reset();
-        this.eleicao = new Eleicao();
-      }).catch(erro => this.errorHandler.handle(erro));
+    console.log(form);
+    if (form.valid) {
+      this.eleicaoService.adicionar(this.eleicao)
+        .then(eleicao => {
+          this.toasty.success(`Eleição ${eleicao.id} salva com sucesso!`);
+          form.reset();
+          this.eleicao = new Eleicao();
+        }).catch(erro => this.errorHandler.handle(erro));
+    }
   }
 
 }

@@ -6,9 +6,10 @@
       </div>
       <div class="ui-g-12 ui-fluid">
         <label for="nome">Nome</label>
-        <input pInputText type="text" required [(ngModel)]="cargo.nome" name="nome">
+        <input pInputText type="text" name="nome" [(ngModel)]="cargo.nome" #nome="ngModel" required>
       </div>
       <div class="ui-g-12">
+        <app-message [control]="nome" error="required" text="Informe um nome" *ngIf="f.submitted"></app-message>
         <p-button label="Cadastrar"></p-button>
       </div>
     </div>

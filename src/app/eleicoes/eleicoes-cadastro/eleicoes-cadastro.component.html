@@ -6,16 +6,19 @@
       </div>
       <div class="ui-g-12 ui-fluid">
         <label for="nome">Nome</label>
-        <input pInputText type="text" required [(ngModel)]="eleicao.nome" name="nome">
+        <input pInputText type="text" name="nome" [(ngModel)]="eleicao.nome" #nome="ngModel" required>
       </div>
       <div class="ui-g-12">
         <label>Duração</label>
-        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }" [(ngModel)]="eleicao.dataInicio" name="dataInicio"></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" name="dataInicio" [inputStyle]="{ width: '95px' }" [(ngModel)]="eleicao.dataInicio" #dataInicio="ngModel" required></p-calendar>
 
         <label>até</label>
-        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }" [(ngModel)]="eleicao.dataFim" name="dataFim"></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" name="dataFim" [inputStyle]="{ width: '95px' }" [(ngModel)]="eleicao.dataFim" #dataFim="ngModel" required></p-calendar>
       </div>
       <div class="ui-g-12">
+        <app-message [control]="nome" error="required" text="Informe um nome" *ngIf="f.submitted"></app-message>
+        <app-message [control]="dataInicio" error="required" text="Informe uma data de inicio" *ngIf="f.submitted"></app-message>
+        <app-message [control]="dataFim" error="required" text="Informe uma data de fim" *ngIf="f.submitted"></app-message>
         <p-button label="Cadastrar"></p-button>
       </div>
     </div>

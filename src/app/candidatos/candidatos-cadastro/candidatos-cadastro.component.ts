@@ -40,12 +40,14 @@ export class CandidatosCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
-    this.candidatoService.adicionar(this.candidato)
-      .then(candidato => {
-        this.toasty.success(`Candidato ${candidato.id} salvo com sucesso!`);
-        form.reset();
-        this.candidato = new Candidato();
-      }).catch(erro => this.errorHandler.handle(erro));
+    if (form.valid) {
+      this.candidatoService.adicionar(this.candidato)
+        .then(candidato => {
+          this.toasty.success(`Candidato ${candidato.id} salvo com sucesso!`);
+          form.reset();
+          this.candidato = new Candidato();
+        }).catch(erro => this.errorHandler.handle(erro));
+    }
   }
 
 }

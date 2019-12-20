@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 
 import { CargosCadastroComponent } from './cargos-cadastro/cargos-cadastro.component';
 import { CargosRoutingModule } from './cargos-routing.model';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   declarations: [CargosCadastroComponent],
@@ -19,7 +20,8 @@ import { CargosRoutingModule } from './cargos-routing.model';
     ButtonModule,
     InputTextModule,
 
-    CargosRoutingModule
+    CargosRoutingModule,
+    SharedModule
   ]
 })
 export class CargosModule { }

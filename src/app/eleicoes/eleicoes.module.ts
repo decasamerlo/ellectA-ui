@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 
 import { EleicoesCadastroComponent } from './eleicoes-cadastro/eleicoes-cadastro.component';
 import { EleicoesRoutingModule } from './eleicoes-routing.module';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   declarations: [EleicoesCadastroComponent],
@@ -19,7 +20,8 @@ import { EleicoesRoutingModule } from './eleicoes-routing.module';
     InputTextModule,
     CalendarModule,
 
-    EleicoesRoutingModule
+    EleicoesRoutingModule,
+    SharedModule
   ]
 })
 export class EleicoesModule { }
