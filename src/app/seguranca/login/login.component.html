@@ -16,6 +16,7 @@
       <div class="ui-g-12">
         <app-message [control]="nome" error="required" text="Informe um nome" *ngIf="f.submitted"></app-message>
         <app-message [control]="cpfInput" error="required" text="Informe um CPF válido" *ngIf="f.submitted"></app-message>
+        <app-message [control]="cpfInput" error="cpf" text="Informe um CPF válido" *ngIf="f.submitted"></app-message>
         <p-button label="Entrar"></p-button>
       </div>
     </div>

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   login(form: NgForm) {
     if (form.valid) {
       this.auth.login(this.eleitor)
-        .then(eleitor => this.router.navigate([`/eleitores/${this.eleitor.id}`]));
+        .then(eleitor => this.router.navigate([`/eleitores/${eleitor.id}`]));
     }
   }
 

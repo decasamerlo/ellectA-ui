@@ -15,9 +15,12 @@ export class AuthService {
     this.carregarUsuario();
   }
 
-  login(eleitor: Eleitor): Promise<void> {
+  login(eleitor: Eleitor): Promise<Eleitor> {
     return this.eleitorService.adicionar(eleitor)
-      .then(eleitorSalvo => this.armazenarUsuario(eleitorSalvo.id.toString()));
+      .then(eleitorSalvo => {
+        this.armazenarUsuario(eleitorSalvo.id.toString());
+        return eleitorSalvo as Eleitor;
+      });
   }
 
   private armazenarUsuario(usuario: string) {
