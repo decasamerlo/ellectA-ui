@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { ToastyService } from 'ng2-toasty';
 
@@ -16,11 +17,13 @@ export class CargosCadastroComponent implements OnInit {
   cargo = new Cargo();
 
   constructor(
+    private title: Title,
     private cargoService: CargoService,
     private toasty: ToastyService
   ) { }
 
   ngOnInit() {
+    this.title.setTitle('EllectA - Cadastro de Cargo');
   }
 
   salvar(form: NgForm) {
