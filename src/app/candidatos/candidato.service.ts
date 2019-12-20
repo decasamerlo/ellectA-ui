@@ -20,8 +20,6 @@ export class CandidatoService {
   }
 
   adicionar(candidato: Candidato): Promise<Candidato> {
-    const headers = new Headers().append('Content-Type', 'application/json');
-
     return this.http.post<Candidato>(this.candidatosUrl, candidato).toPromise();
   }
 }

@@ -20,8 +20,6 @@ export class EleicaoService {
   }
 
   adicionar(eleicao: Eleicao): Promise<Eleicao> {
-    const headers = new Headers().append('Content-Type', 'application/json');
-
     return this.http.post<Eleicao>(this.eleicoesUrl, eleicao).toPromise();
   }
 }

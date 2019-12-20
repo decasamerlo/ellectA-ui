@@ -20,8 +20,6 @@ export class CargoService {
   }
 
   adicionar(cargo: Cargo): Promise<Cargo> {
-    const headers = new Headers().append('Content-Type', 'application/json');
-
     return this.http.post<Cargo>(this.cargosUrl, cargo).toPromise();
   }
 
