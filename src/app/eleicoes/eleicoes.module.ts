@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
@@ -12,6 +13,7 @@ import { EleicoesRoutingModule } from './eleicoes-routing.module';
   declarations: [EleicoesCadastroComponent],
   imports: [
     CommonModule,
+    FormsModule,
 
     ButtonModule,
     InputTextModule,
