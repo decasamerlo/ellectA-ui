@@ -1,3 +1,4 @@
+import { SegurancaModule } from './seguranca/seguranca.module';
 import { CandidatosModule } from './candidatos/candidatos.module';
 import { CargosModule } from './cargos/cargos.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 
     ToastyModule.forRoot(),
 
+    SegurancaModule,
     EleicoesModule,
     CargosModule,
     CandidatosModule,
