@@ -1,1 +1,9 @@
-<p>eleitores-voto works para {{ idEleitor }}!</p>
+<div class="container">
+  <h1>{{ eleitor.nome }}, seja bem-vindo à Área do Eleitor</h1>
+  <div class="ui-g">
+    <div class="ui-g-12 ui-fluid">
+      <label for="eleicao">Eleição</label>
+      <p-dropdown [options]="eleicoes" placeholder="Selecione" [(ngModel)]="eleicao.id" name="eleicao"></p-dropdown>
+    </div>
+  </div>
+</div>

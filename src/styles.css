@@ -12,6 +12,10 @@ label {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 900px;
   margin: auto;
+}
+
+.container h1 {
+  text-align: center;
 }

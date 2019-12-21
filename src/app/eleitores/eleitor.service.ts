@@ -22,4 +22,9 @@ export class EleitorService {
   adicionar(eleitor: Eleitor): Promise<Eleitor> {
     return this.http.post<Eleitor>(this.eleitoresUrl, eleitor).toPromise();
   }
+
+  buscarPorId(id: number): Promise<Eleitor> {
+    return this.http.get(`${this.eleitoresUrl}/${id}`).toPromise()
+      .then(response => response as Eleitor);
+  }
 }
