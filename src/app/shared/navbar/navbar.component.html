@@ -14,5 +14,6 @@
       <a class="sub-menu" href="javascript:;" (click)="toggleMenu()" routerLink="/candidatos/new" routerLinkActive="ativo">Candidatos</a>
     </div>
     <a class="menu" href="javascript:;" (click)="toggleSubMenu('login');toggleMenu();" routerLink="/login" routerLinkActive="ativo">Área do Eleitor</a>
+    <a class="menu" href="javascript:;" (click)="toggleSubMenu('login');toggleMenu();logout();" routerLink="/login" *ngIf="usuarioAtivo">Sair</a>
   </div>
 </nav>

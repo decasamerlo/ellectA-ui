@@ -23,6 +23,10 @@ export class AuthService {
       });
   }
 
+  logout() {
+    this.removerUsuario();
+  }
+
   private armazenarUsuario(usuario: string) {
     localStorage.setItem('usuario', usuario);
   }
@@ -33,6 +37,10 @@ export class AuthService {
     if (usuario) {
       this.armazenarUsuario(usuario);
     }
+  }
+
+  private removerUsuario() {
+    localStorage.removeItem('usuario');
   }
 
 }

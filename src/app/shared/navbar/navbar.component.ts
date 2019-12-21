@@ -1,5 +1,6 @@
 import { SharedModule } from './../shared.module';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/seguranca/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,9 +12,13 @@ export class NavbarComponent implements OnInit {
   exibindoMenu = false;
   menu = 'login';
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+  }
+
+  get usuarioAtivo() {
+    return localStorage.getItem('usuario');
   }
 
   toggleMenu() {
@@ -26,6 +31,10 @@ export class NavbarComponent implements OnInit {
     } else {
       this.menu = menu;
     }
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }
