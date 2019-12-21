@@ -1,9 +1,21 @@
 <div class="container">
   <h1>{{ eleitor.nome }}, seja bem-vindo à Área do Eleitor</h1>
-  <div class="ui-g">
-    <div class="ui-g-12 ui-fluid">
-      <label for="eleicao">Eleição</label>
-      <p-dropdown [options]="eleicoes" placeholder="Selecione" [(ngModel)]="eleicao.id" name="eleicao"></p-dropdown>
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-12">
+      <h2 for="eleicao">Eleição</h2>
+      <p-dropdown [options]="eleicoes" placeholder="Selecione" [(ngModel)]="idEleicao" name="eleicao"
+        (onChange)="carregarCargos()"></p-dropdown>
     </div>
+    <p-panel [toggleable]="true" class="ui-g-12" *ngFor="let cargo of cargos">
+      <p-header>{{ cargo.nome }}</p-header>
+      <div class="ui-g">
+        <p-card *ngFor="let candidato of cargo.candidatos" class="ui-g-3">
+          <p-header>
+            <img src="https://randomuser.me/api/portraits/men/{{candidato.id}}.jpg">
+          </p-header>
+          {{ candidato.nome }}
+        </p-card>
+      </div>
+    </p-panel>
   </div>
 </div>
