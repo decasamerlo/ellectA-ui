@@ -5,11 +5,10 @@ import { Eleitor } from '../eleitor';
 import { EleitorService } from '../eleitor.service';
 import { ErrorHandlerService } from 'src/app/shared/error-handler.service';
 import { EleicaoService } from 'src/app/eleicoes/eleicao.service';
-import { Eleicao } from 'src/app/eleicoes/eleicao';
 import { CargoService } from 'src/app/cargos/cargo.service';
 import { Cargo } from 'src/app/cargos/cargo';
-import { Candidato } from 'src/app/candidatos/candidato';
 import { CandidatoService } from 'src/app/candidatos/candidato.service';
+import { Candidato } from 'src/app/candidatos/candidato';
 
 @Component({
   selector: 'app-eleitores-voto',
@@ -21,6 +20,7 @@ export class EleitoresVotoComponent implements OnInit {
   eleitor = new Eleitor();
   eleicoes = [];
   cargos = [];
+  candidatos = [];
   idEleicao: number;
 
   constructor(
@@ -36,6 +36,7 @@ export class EleitoresVotoComponent implements OnInit {
     const idEleitor = this.route.snapshot.params['id'];
     this.carregarEleitor(idEleitor);
     this.carregarEleicoes();
+    this.carregarCandidatos();
   }
 
   carregarEleicoes() {
@@ -49,17 +50,14 @@ export class EleitoresVotoComponent implements OnInit {
   carregarCargos() {
     this.cargoService.listar()
       .then(cargos => {
-        this.cargos = [];
-        cargos.forEach(cargo => {
-          this.carregarCandidatos(cargo);
-        });
+        this.cargos = cargos;
       })
       .catch(error => this.errorHandler.handle(error));
   }
 
-  carregarCandidatos(cargo: Cargo) {
-    this.candidatoService.listar().then(candidatos => {
-      this.cargos.push({ nome: cargo.nome, candidatos });
+  carregarCandidatos() {
+    this.candidatoService.pesquisar().then(candidatos => {
+      this.candidatos = candidatos;
     });
   }
 
@@ -67,6 +65,10 @@ export class EleitoresVotoComponent implements OnInit {
     this.eleitorService.buscarPorId(idEleitor)
       .then(eleitor => this.eleitor = eleitor)
       .catch(error => this.errorHandler.handle(error));
+  }
+
+  filtrarPorCargo = function(candidato: Candidato) {
+    return this.id === candidato.cargo.id;
   }
 
 }

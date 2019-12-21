@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from './../../environments/environment';
 import { Candidato } from './candidato';
+import { Cargo } from '../cargos/cargo';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,14 @@ export class CandidatoService {
     this.candidatosUrl = `${environment.apiUrl}/candidatos`;
   }
 
-  listar(): Promise<any> {
+  pesquisar(): Promise<any> {
+    let params = new HttpParams();
+    // params = params.set('cargo', cargo.id.toString());
     return this.http.get(`${this.candidatosUrl}`).toPromise();
   }
 
   adicionar(candidato: Candidato): Promise<Candidato> {
     return this.http.post<Candidato>(this.candidatosUrl, candidato).toPromise();
   }
+  
 }

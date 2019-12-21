@@ -16,6 +16,10 @@ label {
   margin: auto;
 }
 
-.container h1 {
+.container h2 {
   text-align: center;
+}
+
+.ui-card {
+  cursor: pointer;
 }

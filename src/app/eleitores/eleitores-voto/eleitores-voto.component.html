@@ -1,19 +1,19 @@
 <div class="container">
-  <h1>{{ eleitor.nome }}, seja bem-vindo à Área do Eleitor</h1>
+  <h2>{{ eleitor.nome }}, seja bem-vindo à Área do Eleitor</h2>
   <div class="ui-g ui-fluid">
     <div class="ui-g-12">
-      <h2 for="eleicao">Eleição</h2>
+      <label for="eleicao">Eleição</label>
       <p-dropdown [options]="eleicoes" placeholder="Selecione" [(ngModel)]="idEleicao" name="eleicao"
         (onChange)="carregarCargos()"></p-dropdown>
     </div>
     <p-panel [toggleable]="true" class="ui-g-12" *ngFor="let cargo of cargos">
       <p-header>{{ cargo.nome }}</p-header>
       <div class="ui-g">
-        <p-card *ngFor="let candidato of cargo.candidatos" class="ui-g-3">
+        <p-card href="#" *ngFor="let candidato of candidatos.filter(filtrarPorCargo, cargo)" class="ui-g-3" (click)="selecionaCandidato(candidato)">
           <p-header>
             <img src="https://randomuser.me/api/portraits/men/{{candidato.id}}.jpg">
           </p-header>
-          {{ candidato.nome }}
+          {{ candidato.nome }}<i class="pi pi-check-circle"></i>
         </p-card>
       </div>
     </p-panel>
