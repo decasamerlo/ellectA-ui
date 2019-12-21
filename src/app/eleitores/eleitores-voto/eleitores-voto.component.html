@@ -9,13 +9,19 @@
     <p-panel [toggleable]="true" class="ui-g-12" *ngFor="let cargo of cargos">
       <p-header>{{ cargo.nome }}</p-header>
       <div class="ui-g">
-        <p-card href="#" *ngFor="let candidato of candidatos.filter(filtrarPorCargo, cargo)" class="ui-g-3" (click)="selecionaCandidato(candidato)">
+        <p-card href="#" *ngFor="let candidato of candidatos.filter(filtrarPorCargo, cargo)" class="ui-g-3"
+          (click)="selecionaCandidato(candidato)"
+          [ngClass]="{ 'selecionado' : candidatosSelecionados.includes(candidato) }">
           <p-header>
             <img src="https://randomuser.me/api/portraits/men/{{candidato.id}}.jpg">
           </p-header>
-          {{ candidato.nome }}<i class="pi pi-check-circle"></i>
+          {{ candidato.nome }}<i class="pi pi-check-circle" *ngIf="candidatosSelecionados.includes(candidato)"></i>
         </p-card>
       </div>
     </p-panel>
+    <div class="ui-g-12" *ngIf="idEleicao">
+      <p-button label="Votar"></p-button>
+      <p-button label="Relatório"></p-button>
+    </div>
   </div>
 </div>

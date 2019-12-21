@@ -21,6 +21,7 @@ export class EleitoresVotoComponent implements OnInit {
   eleicoes = [];
   cargos = [];
   candidatos = [];
+  candidatosSelecionados = [];
   idEleicao: number;
 
   constructor(
@@ -69,6 +70,19 @@ export class EleitoresVotoComponent implements OnInit {
 
   filtrarPorCargo = function(candidato: Candidato) {
     return this.id === candidato.cargo.id;
+  }
+
+  limparPorCargo = function(candidato: Candidato) {
+    return this.id !== candidato.cargo.id;
+  }
+
+  selecionaCandidato(candidato: Candidato) {
+    if (this.candidatosSelecionados.includes(candidato)) {
+      this.candidatosSelecionados = this.candidatosSelecionados.filter(this.limparPorCargo, candidato.cargo);
+    } else {
+      this.candidatosSelecionados = this.candidatosSelecionados.filter(this.limparPorCargo, candidato.cargo);
+      this.candidatosSelecionados.push(candidato);
+    }
   }
 
 }
