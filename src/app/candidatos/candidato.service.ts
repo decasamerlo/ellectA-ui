@@ -17,8 +17,6 @@ export class CandidatoService {
   }
 
   pesquisar(): Promise<any> {
-    let params = new HttpParams();
-    // params = params.set('cargo', cargo.id.toString());
     return this.http.get(`${this.candidatosUrl}`).toPromise();
   }
 

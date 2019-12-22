@@ -4,7 +4,7 @@
     <div class="ui-g-12">
       <label for="eleicao">Eleição</label>
       <p-dropdown [options]="eleicoes" placeholder="Selecione" [(ngModel)]="idEleicao" name="eleicao"
-        (onChange)="carregarCargos()"></p-dropdown>
+        (onChange)="selecionarEleicao()"></p-dropdown>
     </div>
     <p-panel [toggleable]="true" class="ui-g-12" *ngFor="let cargo of cargos">
       <p-header>{{ cargo.nome }}</p-header>
@@ -20,8 +20,8 @@
       </div>
     </p-panel>
     <div class="ui-g-12" *ngIf="idEleicao">
-      <p-button label="Votar"></p-button>
-      <p-button label="Relatório"></p-button>
+      <p-button label="Votar" (click)="votar()" [disabled]="protocolo.id"></p-button>
+      <p-button label="Relatório" (click)="exibirRelatorio()"></p-button>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { EleitorService } from './../eleitores/eleitor.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Eleitor } from './../eleitores/eleitor';
 
@@ -10,7 +10,8 @@ import { Eleitor } from './../eleitores/eleitor';
 export class AuthService {
 
   constructor(
-    private eleitorService: EleitorService
+    private eleitorService: EleitorService,
+    private router: Router
   ) {
     this.carregarUsuario();
   }
@@ -25,6 +26,7 @@ export class AuthService {
 
   logout() {
     this.removerUsuario();
+    this.router.navigate(['/login']);
   }
 
   private armazenarUsuario(usuario: string) {
