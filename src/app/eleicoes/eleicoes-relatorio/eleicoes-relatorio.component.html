@@ -9,7 +9,7 @@
     <p-panel [toggleable]="true" class="ui-g-12" *ngFor="let cargo of cargos">
       <p-header>{{ cargo.nome }}</p-header>
       <div class="ui-g">
-        <p-card href="#" *ngFor="let candidato of candidatos.filter(filtrarCandidatosPorCargo, cargo)" class="ui-lg-3 ui-md-4 ui-sm-6">
+        <p-card href="#" *ngFor="let candidato of candidatosOrdenados.filter(filtrarCandidatosPorCargo, cargo)" class="ui-lg-3 ui-md-4 ui-sm-6">
           <p-header>
             <img src="https://randomuser.me/api/portraits/men/{{candidato.id}}.jpg">
           </p-header>

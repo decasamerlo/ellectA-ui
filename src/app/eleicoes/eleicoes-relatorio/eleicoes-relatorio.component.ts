@@ -69,4 +69,10 @@ export class EleicoesRelatorioComponent implements OnInit {
     });
   }
 
+  get candidatosOrdenados() {
+    return this.candidatos.sort((a, b) => {
+      return this.votos.filter(this.filtrarVotosPorCandidato, b).length - this.votos.filter(this.filtrarVotosPorCandidato, a).length;
+    });
+  }
+
 }
