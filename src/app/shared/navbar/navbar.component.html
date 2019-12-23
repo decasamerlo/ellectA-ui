@@ -15,6 +15,7 @@
     </div>
     <a class="menu" href="javascript:;" (click)="toggleSubMenu('login');toggleMenu();" routerLink="/eleitores" [routerLinkActiveOptions]="{ exact: false }"
       routerLinkActive="ativo">Área do Eleitor</a>
+    <a class="menu" href="javascript:;" (click)="toggleSubMenu('relatorio');toggleMenu();" routerLink="/eleicoes/relatorio" routerLinkActive="ativo">Relatórios</a>
     <a class="menu" href="javascript:;" (click)="toggleSubMenu('login');toggleMenu();logout();" routerLink="/login" *ngIf="usuarioAtivo">Sair</a>
   </div>
 </nav>

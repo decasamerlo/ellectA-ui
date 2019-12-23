@@ -1,0 +1,7 @@
+p-card {
+  cursor: pointer;
+}
+
+.selecionado {
+  background-color: forestgreen;
+}

@@ -20,14 +20,6 @@ label {
   text-align: center;
 }
 
-.ui-card {
-  cursor: pointer;
-}
-
-.selecionado {
-  background-color: forestgreen;
-}
-
 p-button {
   margin-right: 5px;
 }

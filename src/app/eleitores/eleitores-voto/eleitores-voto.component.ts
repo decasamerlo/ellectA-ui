@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ConfirmationService } from 'primeng/api';
 
@@ -42,6 +42,7 @@ export class EleitoresVotoComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private auth: AuthService,
     private confirmation: ConfirmationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -116,10 +117,6 @@ export class EleitoresVotoComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  exibirRelatorio() {
-    console.log('Exibindo relatório');
-  }
-
   votar() {
     this.protocoloService.adicionar(this.protocolo)
       .then(protocolo => {
@@ -134,7 +131,7 @@ export class EleitoresVotoComponent implements OnInit {
         this.confirmation.confirm({
           message: `O seu voto foi computado com sucesso, através do protocolo ${this.protocolo.codigo}`,
           accept: () => {
-            console.log('aceitou');
+            this.router.navigate(['/eleicoes/relatorio']);
           },
           reject: () => {
             this.auth.logout();

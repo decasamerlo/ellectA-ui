@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Selecione a eleição para visualizar o relatório</h2>
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-12">
+      <label for="eleicao">Eleição</label>
+      <p-dropdown [options]="eleicoes" placeholder="Selecione" [(ngModel)]="eleicao" name="eleicao"
+        (onChange)="selecionarEleicao()"></p-dropdown>
+    </div>
+    <p-panel [toggleable]="true" class="ui-g-12" *ngFor="let cargo of cargos">
+      <p-header>{{ cargo.nome }}</p-header>
+      <div class="ui-g">
+        <p-card href="#" *ngFor="let candidato of candidatos.filter(filtrarCandidatosPorCargo, cargo)" class="ui-g-3">
+          <p-header>
+            <img src="https://randomuser.me/api/portraits/men/{{candidato.id}}.jpg">
+          </p-header>
+          {{ candidato.nome }}
+          <p-footer>Votos: {{ votos.filter(filtrarVotosPorCandidato, candidato).length }}</p-footer>
+        </p-card>
+      </div>
+      <p-footer>Total de votos: {{ votos.filter(filtrarVotosPorCargo, cargo).length }}</p-footer>
+    </p-panel>
+  </div>
+</div>
