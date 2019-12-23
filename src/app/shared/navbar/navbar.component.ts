@@ -18,7 +18,12 @@ export class NavbarComponent implements OnInit {
   }
 
   get usuarioAtivo() {
-    return localStorage.getItem('usuario');
+    const u = localStorage.getItem('usuario');
+    if (u) {
+      return u;
+    } else {
+      return "";
+    }
   }
 
   toggleMenu() {

@@ -5,6 +5,7 @@ import { AuthGuard } from './../seguranca/auth.guard';
 import { EleitoresVotoComponent } from './eleitores-voto/eleitores-voto.component';
 
 const routes: Routes = [
+  { path: 'eleitores', redirectTo: 'login', pathMatch: 'full' },
   { path: 'eleitores/:id', component: EleitoresVotoComponent, canActivate: [AuthGuard] }
 ];
 
