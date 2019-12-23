@@ -3,7 +3,6 @@ import { EleicaoService } from '../eleicao.service';
 import { ErrorHandlerService } from 'src/app/shared/error-handler.service';
 import { Eleicao } from '../eleicao';
 import { CargoService } from 'src/app/cargos/cargo.service';
-import { Cargo } from 'src/app/cargos/cargo';
 import { Candidato } from 'src/app/candidatos/candidato';
 import { Voto } from 'src/app/votos/voto';
 import { CandidatoService } from 'src/app/candidatos/candidato.service';
@@ -34,7 +33,7 @@ export class EleicoesRelatorioComponent implements OnInit {
   }
 
   carregarEleicoes() {
-    this.eleicaoService.listar()
+    this.eleicaoService.listar(false)
       .then(eleicoes => {
         this.eleicoes = eleicoes.map(e => ({ label: e.nome, value: e }));
       })
@@ -42,13 +41,23 @@ export class EleicoesRelatorioComponent implements OnInit {
   }
 
   selecionarEleicao() {
-    this.cargoService.listar()
-      .then(cargos => this.cargos = cargos)
-      .catch(error => this.errorHandler.handle(error));
+    if (this.eleicao.dataFim <= new Date()) {
+      this.cargoService.listar()
+        .then(cargos => this.cargos = cargos)
+        .catch(error => this.errorHandler.handle(error));
 
-    this.eleicaoService.buscarRelatorio(this.eleicao.id)
-      .then(votos => this.votos = votos)
-      .catch(error => this.errorHandler.handle(error));
+      this.eleicaoService.buscarRelatorio(this.eleicao.id)
+        .then(votos => this.votos = votos)
+        .catch(error => this.errorHandler.handle(error));
+    } else if (this.eleicao.dataInicio <= new Date()) {
+      this.eleicaoService.buscarRelatorio(this.eleicao.id)
+        .then(votos => this.votos = votos)
+        .catch(error => this.errorHandler.handle(error));
+      this.cargos = [];
+    } else {
+      this.votos = [];
+      this.cargos = [];
+    }
   }
 
   filtrarVotosPorCargo = function(voto: Voto) {
@@ -73,6 +82,10 @@ export class EleicoesRelatorioComponent implements OnInit {
     return this.candidatos.sort((a, b) => {
       return this.votos.filter(this.filtrarVotosPorCandidato, b).length - this.votos.filter(this.filtrarVotosPorCandidato, a).length;
     });
+  }
+
+  get mostrarVotos() {
+    return this.eleicao.dataInicio <= new Date();
   }
 
 }

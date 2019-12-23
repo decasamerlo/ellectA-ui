@@ -53,7 +53,7 @@ export class EleitoresVotoComponent implements OnInit {
   }
 
   carregarEleicoes() {
-    this.eleicaoService.listar()
+    this.eleicaoService.listar(true)
       .then(eleicoes => {
         this.eleicoes = eleicoes.map(e => ({ label: e.nome, value: e.id }));
       })

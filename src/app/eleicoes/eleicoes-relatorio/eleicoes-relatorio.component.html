@@ -19,5 +19,11 @@
       </div>
       <p-footer>Total de votos: {{ votos.filter(filtrarVotosPorCargo, cargo).length }}</p-footer>
     </p-panel>
+    <div class="ui-g-12" *ngIf="mostrarVotos">
+      Total de votos da eleicao: {{ votos.length }}
+    </div>
+    <div class="ui-g-12" *ngIf="!mostrarVotos && eleicao.id">
+      Esta eleição irá iniciar em {{ eleicao.dataInicio | date: 'dd/MM/yyyy' }}
+    </div>
   </div>
 </div>
