@@ -13,6 +13,8 @@ import { Candidato } from 'src/app/candidatos/candidato';
 import { ProtocoloService } from 'src/app/protocolos/protocolo.service';
 import { Protocolo } from 'src/app/protocolos/protocolo';
 import { AuthService } from 'src/app/seguranca/auth.service';
+import { VotoService } from 'src/app/votos/voto.service';
+import { Voto } from 'src/app/votos/voto';
 
 @Component({
   selector: 'app-eleitores-voto',
@@ -36,9 +38,10 @@ export class EleitoresVotoComponent implements OnInit {
     private cargoService: CargoService,
     private candidatoService: CandidatoService,
     private protocoloService: ProtocoloService,
+    private votoService: VotoService,
     private errorHandler: ErrorHandlerService,
     private auth: AuthService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
   ) { }
 
   ngOnInit() {
@@ -121,10 +124,17 @@ export class EleitoresVotoComponent implements OnInit {
     this.protocoloService.adicionar(this.protocolo)
       .then(protocolo => {
         this.protocolo = protocolo;
+        this.candidatosSelecionados.forEach(candidato => {
+          let voto = new Voto();
+          voto.candidato = candidato;
+          voto.protocolo = this.protocolo;
+          this.votoService.adicionar(voto)
+            .catch(erro => this.errorHandler.handle(erro));
+        });
         this.confirmation.confirm({
           message: `O seu voto foi computado com sucesso, através do protocolo ${this.protocolo.codigo}`,
           accept: () => {
-            console.log('aceitou')
+            console.log('aceitou');
           },
           reject: () => {
             this.auth.logout();
