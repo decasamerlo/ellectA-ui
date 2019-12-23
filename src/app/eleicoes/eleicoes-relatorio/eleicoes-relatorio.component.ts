@@ -51,17 +51,17 @@ export class EleicoesRelatorioComponent implements OnInit {
       .catch(error => this.errorHandler.handle(error));
   }
 
-  filtrarVotosPorCargo = function (voto: Voto) {
+  filtrarVotosPorCargo = function(voto: Voto) {
     return this.id === voto.candidato.cargo.id;
-  }
+  };
 
-  filtrarVotosPorCandidato = function (voto: Voto) {
+  filtrarVotosPorCandidato = function(voto: Voto) {
     return this.id === voto.candidato.id;
-  }
+  };
 
-  filtrarCandidatosPorCargo = function (candidato: Candidato) {
+  filtrarCandidatosPorCargo = function(candidato: Candidato) {
     return this.id === candidato.cargo.id;
-  }
+  };
 
   carregarCandidatos() {
     this.candidatoService.pesquisar().then(candidatos => {

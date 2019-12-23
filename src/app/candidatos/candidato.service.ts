@@ -23,5 +23,5 @@ export class CandidatoService {
   adicionar(candidato: Candidato): Promise<Candidato> {
     return this.http.post<Candidato>(this.candidatosUrl, candidato).toPromise();
   }
-  
+
 }

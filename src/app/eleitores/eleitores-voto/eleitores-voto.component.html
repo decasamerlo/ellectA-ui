@@ -9,7 +9,7 @@
     <p-panel [toggleable]="true" class="ui-g-12" *ngFor="let cargo of cargos">
       <p-header>{{ cargo.nome }}</p-header>
       <div class="ui-g">
-        <p-card href="#" *ngFor="let candidato of candidatos.filter(filtrarPorCargo, cargo)" class="ui-g-3"
+        <p-card href="#" *ngFor="let candidato of candidatos.filter(filtrarPorCargo, cargo)" class="ui-lg-3 ui-md-4 ui-sm-6"
           (click)="selecionaCandidato(candidato)"
           [ngClass]="{ 'selecionado' : candidatosSelecionados.includes(candidato) }">
           <p-header>
