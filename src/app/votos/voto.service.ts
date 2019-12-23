@@ -1,3 +1,4 @@
+import { Protocolo } from './../protocolos/protocolo';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -15,8 +16,13 @@ export class VotoService {
   }
 
   adicionar(voto: Voto): Promise<Voto> {
-    console.log(voto);
     return this.http.post<Voto>(this.votosUrl, voto).toPromise();
   }
-  
+
+  buscarPorProtocolo(protocolo: Protocolo): Promise<any> {
+    let params = new HttpParams();
+    params = params.set('idProtocolo', protocolo.id.toString());
+    return this.http.get(this.votosUrl, {params}).toPromise();
+  }
+
 }

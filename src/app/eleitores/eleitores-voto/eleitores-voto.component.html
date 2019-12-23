@@ -9,9 +9,9 @@
     <p-panel [toggleable]="true" class="ui-g-12" *ngFor="let cargo of cargos">
       <p-header>{{ cargo.nome }}</p-header>
       <div class="ui-g">
-        <p-card href="#" *ngFor="let candidato of candidatos.filter(filtrarPorCargo, cargo)" class="ui-lg-3 ui-md-4 ui-sm-6"
+        <p-card href="#" *ngFor="let candidato of candidatosFiltradosPorCargo(cargo)" class="ui-lg-3 ui-md-4 ui-sm-6"
           (click)="selecionaCandidato(candidato)"
-          [ngClass]="{ 'selecionado' : candidatosSelecionados.includes(candidato) }">
+          [ngClass]="{ 'selecionado' : candidatosSelecionados.includes(candidato), 'clicavel' : !protocolo.id }">
           <p-header>
             <img src="https://randomuser.me/api/portraits/men/{{candidato.id}}.jpg">
           </p-header>
@@ -20,7 +20,7 @@
       </div>
     </p-panel>
     <div class="ui-g-12" *ngIf="idEleicao">
-      <p-button label="Votar" (click)="votar()" [disabled]="protocolo.id"></p-button>
+      <p-button label="Votar" (onClick)="votar()" [disabled]="protocolo.id"></p-button>
     </div>
   </div>
 </div>

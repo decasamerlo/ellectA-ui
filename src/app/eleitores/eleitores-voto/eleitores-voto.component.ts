@@ -1,3 +1,4 @@
+import { Cargo } from './../../cargos/cargo';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -62,8 +63,8 @@ export class EleitoresVotoComponent implements OnInit {
 
   selecionarEleicao() {
     this.candidatosSelecionados = [];
-    this.carregarCargos();
     this.carregarProtocolo();
+    this.carregarCargos();
   }
 
   carregarCargos() {
@@ -96,11 +97,13 @@ export class EleitoresVotoComponent implements OnInit {
   }
 
   selecionaCandidato(candidato: Candidato) {
-    if (this.candidatosSelecionados.includes(candidato)) {
-      this.candidatosSelecionados = this.candidatosSelecionados.filter(this.limparPorCargo, candidato.cargo);
-    } else {
-      this.candidatosSelecionados = this.candidatosSelecionados.filter(this.limparPorCargo, candidato.cargo);
-      this.candidatosSelecionados.push(candidato);
+    if (!this.protocolo.id) {
+      if (this.candidatosSelecionados.includes(candidato)) {
+        this.candidatosSelecionados = this.candidatosSelecionados.filter(this.limparPorCargo, candidato.cargo);
+      } else {
+        this.candidatosSelecionados = this.candidatosSelecionados.filter(this.limparPorCargo, candidato.cargo);
+        this.candidatosSelecionados.push(candidato);
+      }
     }
   }
 
@@ -110,6 +113,12 @@ export class EleitoresVotoComponent implements OnInit {
       .then(protocolo => {
         if (protocolo) {
           this.protocolo = protocolo;
+          this.votoService.buscarPorProtocolo(protocolo)
+            .then(votos => {
+              votos.forEach(voto => {
+                this.candidatosSelecionados.push(voto.candidato);
+              });
+            });
         } else {
           this.protocolo.id = null;
         }
@@ -139,6 +148,14 @@ export class EleitoresVotoComponent implements OnInit {
         });
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  candidatosFiltradosPorCargo(cargo: Cargo) {
+    if (this.protocolo.id) {
+      return this.candidatosSelecionados.filter(this.filtrarPorCargo, cargo);
+    } else {
+      return this.candidatos.filter(this.filtrarPorCargo, cargo);
+    }
   }
 
 }
